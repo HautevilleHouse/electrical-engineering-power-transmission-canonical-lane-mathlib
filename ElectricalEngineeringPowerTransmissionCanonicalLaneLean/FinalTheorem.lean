@@ -1,0 +1,19 @@
+import canonicalLaneMathlib.AdmissibleClass
+import ElectricalEngineeringPowerTransmissionCanonicalLaneLean.LoadFlowAnalysis
+import ElectricalEngineeringPowerTransmissionCanonicalLaneLean.FaultAnalysis
+import ElectricalEngineeringPowerTransmissionCanonicalLaneLean.PowerSystemStability
+import ElectricalEngineeringPowerTransmissionCanonicalLaneLean.TransmissionLineModeling
+import ElectricalEngineeringPowerTransmissionCanonicalLaneLean.PowerFlowSolution
+
+namespace HautevilleHouse
+namespace ElectricalEngineeringPowerTransmissionCanonicalLaneLean
+
+def ConstrainedPowerTransmissionClosure (A : AdmissibleClass) : Prop :=
+  bridgeClosed A ∧ gateClosed A
+
+theorem constrained_power_transmission_endgame (A : AdmissibleClass) :
+    ConstrainedPowerTransmissionClosure A := by
+  exact And.intro (bridge_from_admissible_class A) (gate_from_admissible_class A)
+
+end ElectricalEngineeringPowerTransmissionCanonicalLaneLean
+end HautevilleHouse
